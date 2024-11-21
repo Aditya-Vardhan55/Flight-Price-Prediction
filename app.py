@@ -7,7 +7,7 @@ import warnings
 warnings.filterwarnings("ignore", message="X does not have valid feature names")
 
 # Load the model
-with open('C:\\Users\\vardh\\.vscode\\Flight Prices\\flight_price_model.pkl', 'rb') as file:
+with open('flight_price_model.pkl', 'rb') as file:
     model = pickle.load(file)
 
 # Initialize Flask application

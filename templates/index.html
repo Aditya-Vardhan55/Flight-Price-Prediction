@@ -4,103 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Price Prediction</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static\style.css">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"> -->
+
+     
 </head>
 <body>
-    <div class="container">
-        <h1>Flight Price Predictor</h1>
-        <form id="predictionForm"> <!-- Corrected ID -->
-            <div class="form-group">
-                <label for="airline">Airline:</label>
-                <input type="text" id="airline" name="airline" placeholder="e.g., IndiGo" required>
-            </div>
-            <div class="form-group">
-                <label for="source">Source:</label>
-                <input type="text" id="source" name="source" placeholder="e.g., Delhi" required>
-            </div>
-            <div class="form-group">
-                <label for="destination">Destination:</label>
-                <input type="text" id="destination" name="destination" placeholder="e.g., Mumbai" required>
-            </div>
-            <div class="form-group">
-                <label for="stops">Total Stops:</label>
-                <input type="number" id="stops" name="stops" placeholder="e.g., 1" required>
-            </div>
-            <div class="form-group">
-                <label for="journey_day">Journey Day:</label>
-                <input type="number" id="journey_day" name="journey_day" placeholder="e.g., 15" required>
-            </div>
-            <div class="form-group">
-                <label for="journey_month">Journey Month:</label>
-                <input type="number" id="journey_month" name="journey_month" placeholder="e.g., 12" required>
-            </div>
-            <div class="form-group">
-                <label for="dep_hour">Departure Hour:</label>
-                <input type="number" id="dep_hour" name="dep_hour" placeholder="e.g., 6" required>
-            </div>
-            <div class="form-group">
-                <label for="dep_min">Departure Minute:</label>
-                <input type="number" id="dep_min" name="dep_min" placeholder="e.g., 45" required>
-            </div>
-            <div class="form-group">
-                <label for="arrival_hour">Arrival Hour:</label>
-                <input type="number" id="arrival_hour" name="arrival_hour" placeholder="e.g., 9" required>
-            </div>
-            <div class="form-group">
-                <label for="arrival_min">Arrival Minute:</label>
-                <input type="number" id="arrival_min" name="arrival_min" placeholder="e.g., 30" required>
-            </div>
-            <div class="form-group">
-                <label for="additional_info">Additional Info:</label>
-                <input type="text" id="additional_info" name="additional_info" placeholder="e.g., In-flight meal">
-            </div>
-            <button type="submit">Predict Price</button>
-        </form>
+    <section>
 
+        <div class="container">
+            <h1 class="title">Flight Price Predictor</h1>
+        <form id="predictionForm" class="form">
+            <div class="form-group">
+                <input type="text" id="airline" name="airline" required>
+                <label for="airline">Airline:(e.g., IndiGo)</label>
+            </div>
+            <div class="form-group">
+                <input type="text" id="source" name="source" required>
+                <label for="source">Source(e.g., Delhi):</label>
+            </div>
+            <div class="form-group">
+                <input type="text" id="destination" name="destination" required>
+                <label for="destination">Destination:(e.g., Mumbai)</label>
+            </div>
+            <div class="form-group">
+                <input type="number" id="stops" name="stops" required>
+                <label for="stops">Total Stops:(e.g., 1)</label>
+            </div>
+            <div class="form-group">
+                <input type="number" id="journey_day" name="journey_day" required>
+                <label for="journey_day">Journey Day:(e.g., 15)</label>
+            </div>
+            <div class="form-group">
+                <input type="number" id="journey_month" name="journey_month" required>
+                <label for="journey_month">Journey Month:(e.g., 12)</label>
+            </div>
+            <div class="form-group">
+                <input type="number" id="dep_hour" name="dep_hour" required>
+                <label for="dep_hour">Departure Hour:(e.g., 6)</label>
+            </div>
+            <div class="form-group">
+                <input type="number" id="dep_min" name="dep_min" required>
+                <label for="dep_min">Departure Minute:(e.g., 45)</label>
+            </div>
+            <div class="form-group">
+                <input type="number" id="arrival_hour" name="arrival_hour" required>
+                <label for="arrival_hour">Arrival Hour:(e.g., 9)</label>
+            </div>
+            <div class="form-group">
+                <input type="number" id="arrival_min" name="arrival_min" required>
+                <label for="arrival_min">Arrival Minute:(e.g., 30)</label>
+            </div>
+            <div class="form-group">
+                <input type="text" id="additional_info" name="additional_info" not required>
+                <label for="additional_info">Additional Info:(e.g., In-flight meal) </label>
+            </div>
+            <button type="submit" class="btn">Predict Price</button>
+        </form>
+    </section>
+        
         <div id="result" class="result">
-            <h2>Predicted Price: <span id="predictedPrice"></span></h2> <!-- Updated ID -->
+            <h2>Predicted Price: <span id="predictedPrice">-</span></h2>
         </div>
     </div>
-
+    
     <script>
+
+
+
         document.getElementById("predictionForm").addEventListener("submit", function(event){
             event.preventDefault();
             
-            // Gather form data
-            var formData = {
-                'airline': document.getElementById("airline").value,
-                'source': document.getElementById("source").value,
-                'destination': document.getElementById("destination").value,
-                'stops': document.getElementById("stops").value,
-                'journey_day': document.getElementById("journey_day").value,
-                'journey_month': document.getElementById("journey_month").value,
-                'dep_hour': document.getElementById("dep_hour").value,
-                'dep_min': document.getElementById("dep_min").value,
-                'arrival_hour': document.getElementById("arrival_hour").value,
-                'arrival_min': document.getElementById("arrival_min").value,
-                'additional_info': document.getElementById("additional_info").value
+            const formData = {
+                airline: document.getElementById("airline").value,
+                source: document.getElementById("source").value,
+                destination: document.getElementById("destination").value,
+                stops: document.getElementById("stops").value,
+                journey_day: document.getElementById("journey_day").value,
+                journey_month: document.getElementById("journey_month").value,
+                dep_hour: document.getElementById("dep_hour").value,
+                dep_min: document.getElementById("dep_min").value,
+                arrival_hour: document.getElementById("arrival_hour").value,
+                arrival_min: document.getElementById("arrival_min").value,
+                additional_info: document.getElementById("additional_info").value,
             };
-    
-            // Send POST request to Flask API
+
             fetch('/predict', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
             })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
-                document.getElementById("predictedPrice").innerText = data.prediction; // Updated to reflect the correct element ID
+                document.getElementById("predictedPrice").innerText = data.prediction || "N/A";
             })
-            .catch((error) => {
-                console.error('Error:', error);
-                document.getElementById("predictedPrice").innerText = "Error calculating price"; // Updated to reflect the correct element ID
+            .catch(() => {
+                document.getElementById("predictedPrice").innerText = "Error occurred";
             });
         });
     </script>
-    
 </body>
 </html>
