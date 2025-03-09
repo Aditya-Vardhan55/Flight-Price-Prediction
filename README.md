@@ -39,3 +39,5 @@ Used a flight price dataset (if applicable) from Kaggle / airline sources.
 Contains features such as airline, journey date, duration, departure, arrival, and fare.
 ## Contributing 🤝
 Feel free to fork this repository, submit issues, and send pull requests. Contributions are welcome!
+
+✈️ "Plan smart, travel smart!" 🛫
